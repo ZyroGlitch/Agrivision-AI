@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgriVision AI - Get Started</title>
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='agrivision-logo.svg') }}">
+
+  <!-- Link Tailwind CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='output.css') }}">
+
+  <!-- Link animation CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='animation.css') }}">
+
+
+</head>
+
+<body class="bg-gradient-to-br from-green-800 via-black to-green-900 text-white font-sans">
+
+  <div class="absolute top-6 left-6">
+    <a href="{{ url_for('index') }}"
+      class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold px-4 py-2 rounded-xl shadow-md transition duration-300">
+      Go Back
+    </a>
+  </div>
+
+  <div class="min-h-screen flex items-center justify-center px-6 py-12">
+
+    <div
+      class="backdrop-blur-md bg-white/10 border border-green-400/30 rounded-3xl shadow-2xl p-10 max-w-6xl w-full animate-fade-in transition-all duration-700">
+      <h2 class="text-center text-5xl font-extrabold text-green-400 mb-12 tracking-wide drop-shadow-lg">🌱 AgriVision AI
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-10" method="POST" enctype="multipart/form-data">
+        <!-- LEFT COLUMN -->
+        <form action="{{ url_for('prediction') }}" method="POST" enctype="multipart/form-data" class="space-y-8">
+          <label for="algorithm" class="block mb-2 text-sm font-medium text-green-300">Choose Algorithm:</label>
+          <select name="selected_algorithm" id="algorithm"
+            class="w-full px-4 py-3 rounded-lg bg-white/20 border border-green-300 text-green-100 backdrop-blur focus:ring-2 focus:ring-green-400 transition-all duration-300">
+            <div class="text-black">
+              <option value="cnn" {% if algorithm=="CNN" %}selected{% endif %}>Convolutional Neural Network (CNN)
+              </option>
+              <option value="knn" {% if algorithm=="KNN" %}selected{% endif %}>K-Nearest Neighbors (KNN)</option>
+              <option value="svm" {% if algorithm=="SVM" %}selected{% endif %}>Support Vector Machine (SVM)</option>
+            </div>
+          </select>
+
+          <div>
+            <label class="block mb-2 text-sm font-medium text-green-300" for="upload">Upload Image:</label>
+            <input type="file" name="image" accept="image/*" required id="upload"
+              class="w-full px-4 py-3 rounded-lg bg-white/10 border border-green-300 text-green-100 file:bg-green-600 file:text-white file:rounded-md file:px-4 file:py-2 file:border-none hover:file:bg-green-700 transition-all duration-300" />
+          </div>
+
+          <button type="submit"
+            class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-all duration-300 w-full">
+            🔍 Predict
+          </button>
+        </form>
+
+
+        <!-- RIGHT COLUMN -->
+        <div class="space-y-6 text-center">
+          {% if image %}
+          <img src="{{ image }}" alt="Uploaded Crop"
+            class="mx-auto rounded-2xl w-64 h-64 object-contain shadow-lg border-4 border-green-400" />
+          {% else %}
+          <img src="{{ url_for('static', filename='plant.png') }}" alt="Default Image"
+            class="mx-auto w-64 h-64 object-contain shadow-lg border-4 border-green-400">
+          {% endif %}
+
+          <div
+            class="bg-white/10 rounded-xl p-6 text-left space-y-3 text-sm md:text-base text-green-100 border border-green-300">
+            <p>
+              <strong>🔢 Algorithm Used:</strong>
+              <span class="text-green-300 font-semibold">
+                {{ algorithm if algorithm else "None" }}
+              </span>
+            </p>
+
+            <p>
+              <strong>🌾 The image belongs to:</strong>
+              <span class="text-green-300 font-semibold">
+                {{ predicted_class if predicted_class else "None" }}
+              </span>
+            </p>
+
+            <p>
+              <strong>📊 Accuracy Score:</strong>
+              <span class="text-green-300 font-semibold">
+                {{ confidence if confidence else "0" }}%
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- JS file -->
+  <script src="{{ url_for('static', filename='page-transition.js') }}"></script>
+</body>
+
+</html>

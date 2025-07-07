@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgriVision AI</title>
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='agrivision-logo.svg') }}">
+
+  <!-- Link Tailwind CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='output.css') }}">
+
+  <!-- Link animation CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='animation.css') }}">
+</head>
+
+<body class="bg-gradient-to-br from-green-800 via-black to-green-900 text-white font-sans">
+
+  <div class="flex items-center justify-center min-h-screen px-6 py-12">
+    <div
+      class="backdrop-blur-md bg-white/10 border border-green-400/30 rounded-3xl shadow-2xl p-10 max-w-4xl w-full space-y-8 animate-fade-in transition-all duration-700">
+
+
+      <div class="text-center space-y-4">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-green-400 drop-shadow-lg">🌿 Welcome to AgriVision AI</h1>
+        <p class="text-lg md:text-xl text-green-200">Your partner in agricultural innovation</p>
+      </div>
+
+
+      <div class="text-sm md:text-base leading-relaxed text-green-100 space-y-5">
+        <p class="text-justify">
+          <span class="text-green-300 font-semibold">AgriVision AI</span> is a powerful web platform that uses advanced
+          Artificial Intelligence to transform the way agricultural images are
+          analyzed. Built for farmers, researchers, and agricultural professionals, it offers a seamless workflow for
+          uploading
+          crop or plant images and selecting from three machine learning algorithms
+          <span class="font-semibold text-green-300">Convolutional Neural Network (CNN)</span>,
+          <span class="font-semibold text-green-300">K-Nearest Neighbors (KNN)</span> and
+          <span class="font-semibold text-green-300">Support Vector Machine (SVM)</span>.
+        </p>
+        <div>
+          <h2 class="text-lg md:text-md text-green-300 font-bold">
+            How AgriVision AI Works
+          </h2>
+          <ul>
+            <li>🔢 Choose your preferred AI model: CNN, KNN, or SVM.</li>
+            <li>🖼️ Upload a clear image of a flower, fruit, or vegetable.</li>
+            <li>🧠 The selected algorithm analyzes the image and makes a prediction.</li>
+            <li>📊 See the predicted class, confidence score, and algorithm used.</li>
+          </ul>
+        </div>
+      </div>
+
+
+      <div class="text-center">
+        <a href="{{ url_for('get_started') }}"
+          class="inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-xl shadow-lg transition-all duration-300">
+          🚀 Get Started
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS file -->
+  <script src="{{ url_for('static', filename='page-transition.js') }}"></script>
+</body>
+
+</html>

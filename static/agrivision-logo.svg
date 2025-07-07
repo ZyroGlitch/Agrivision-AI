@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <circle cx="50" cy="50" r="45" fill="#4CAF50" />
+  <circle cx="50" cy="50" r="40" fill="#388E3C" />
+  <!-- Leaf shape -->
+  <path d="M30,35 C40,25 60,25 75,40 C60,55 40,55 30,35 Z" fill="#FFFFFF" />
+  <path d="M70,65 C60,75 40,75 25,60 C40,45 60,45 70,65 Z" fill="#FFFFFF" />
+  <!-- Center circle -->
+  <circle cx="50" cy="50" r="10" fill="#FFFFFF" />
+</svg>
